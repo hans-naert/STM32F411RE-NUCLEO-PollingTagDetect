@@ -1,0 +1,7 @@
+Binary
+EWARM
+SW4STM32
+DebugConfig
+*.d
+*.o
+*.icf
