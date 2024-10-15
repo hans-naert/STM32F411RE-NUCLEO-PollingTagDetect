@@ -2,6 +2,7 @@ Binary
 EWARM
 SW4STM32
 DebugConfig
+**/Exe
 *.d
 *.o
 *.icf
