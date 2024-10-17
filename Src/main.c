@@ -49,6 +49,7 @@
 #include "st_errno.h"
 #include "rfal_nfc.h"
 /* USER CODE END Includes */
+#include <string.h>
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
@@ -119,6 +120,9 @@ int main(void)
   logUsartInit(&huart2);
   
   platformLog("Welcome to X-NUCLEO-NFC05A1\r\n");
+	
+	char *s="TEST UART1\r\n";
+	HAL_UART_Transmit(&huart1, (uint8_t *)s, strlen(s), HAL_MAX_DELAY);
   
   /* Initalize RFAL */
   if( !demoIni() )

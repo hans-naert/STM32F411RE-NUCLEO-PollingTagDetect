@@ -50,6 +50,10 @@
 #include "demo_ce.h"
 #endif
 
+#include "main.h"
+#include <string.h>
+extern UART_HandleTypeDef huart1;
+
 /*
 ******************************************************************************
 * GLOBAL DEFINES
@@ -275,6 +279,13 @@ void demoCycle( void )
             if( rfalNfcIsDevActivated( rfalNfcGetState() ) )
             {
                 rfalNfcGetActiveDevice( &nfcDevice );
+							
+								{
+									char* s=hex2Str( nfcDevice->nfcid, nfcDevice->nfcidLen);
+									HAL_UART_Transmit(&huart1,(uint8_t *)s,strlen(s),HAL_MAX_DELAY);
+									char c='\n';
+									HAL_UART_Transmit(&huart1,(uint8_t *)&c,1,HAL_MAX_DELAY);
+								}	
                 
                 switch( nfcDevice->type )
                 {
